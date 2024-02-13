@@ -40,12 +40,17 @@ jobs:
     - name: Build APK
       run: |
         flutter build apk --release
+  
+    - name: Get Last Commit ID
+      id: last_commit
+      run: echo "::set-env name=COMMIT_ID::$(git rev-parse --short HEAD)"
 
     - name: Upload APK to Release
       env:
         GITHUB_TOKEN: ${{ secrets.PAT }}
+        COMMIT_ID: ${{ steps.last_commit.outputs.COMMIT_ID }}
       run: |
-        curl -X POST "https://api.github.com/repos/SocialTask/SocialTask/releases/latest/assets?name=SocialTask.apk" \
+        curl -X POST "https://api.github.com/repos/SocialTask/SocialTask/releases/${COMMIT_ID}/assets?name=SocialTask.apk" \
           -H "Authorization: token $GITHUB_TOKEN" \
           -H "Content-Type: application/vnd.android.package-archive" \
           --data-binary "@build/app/outputs/flutter-apk/app-release.apk"
