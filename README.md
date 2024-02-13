@@ -64,6 +64,8 @@ Explore the [API documentation](https://github.com/SocialTask/Server/tree/main/d
 
 We welcome contributions from the community! Please review our [contribution guidelines](CONTRIBUTING.md) and [code of conduct](CODE_OF_CONDUCT.md) before contributing.
 
+Join our Discord community for discussions, support, and collaboration: [SocialTask Discord](https://discord.gg/qzwC7P65pg)
+
 ## 📝 License
 
 [MIT](LICENSE) - Created by [SocialTask Team](https://github.com/SocialTask).
