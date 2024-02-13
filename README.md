@@ -25,26 +25,13 @@
 </p>
 
 ## 📱Screenshots
-  <style>
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      grid-gap: 10px;
-    }
 
-    .image {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
-  </style>
-
-  <div class="container">
-    <img class="image" src="https://raw.githubusercontent.com/SocialTask/Assets/main/Screenshots/1707824553965.jpg" alt="Imagen 1">
-    <img class="image" src="https://raw.githubusercontent.com/SocialTask/Assets/main/Screenshots/1707824553913.jpg" alt="Imagen 2">
-    <img class="image" src="https://raw.githubusercontent.com/SocialTask/Assets/main/Screenshots/1707824553875.jpg" alt="Imagen 3">
-    <img class="image" src="https://raw.githubusercontent.com/SocialTask/Assets/main/Screenshots/1707824553895.jpg" alt="Imagen 4">
-  </div>
+<div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); grid-gap: 10px;">
+  <img class="image" src="https://raw.githubusercontent.com/SocialTask/Assets/main/Screenshots/1707824553965.jpg" alt="Imagen 1" style="width: 100%; height: auto; object-fit: cover;">
+  <img class="image" src="https://raw.githubusercontent.com/SocialTask/Assets/main/Screenshots/1707824553913.jpg" alt="Imagen 2" style="width: 100%; height: auto; object-fit: cover;">
+  <img class="image" src="https://raw.githubusercontent.com/SocialTask/Assets/main/Screenshots/1707824553875.jpg" alt="Imagen 3" style="width: 100%; height: auto; object-fit: cover;">
+  <img class="image" src="https://raw.githubusercontent.com/SocialTask/Assets/main/Screenshots/1707824553895.jpg" alt="Imagen 4" style="width: 100%; height: auto; object-fit: cover;">
+</div>
 
 ---
 ## 🚀 Start
