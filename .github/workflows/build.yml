@@ -43,12 +43,12 @@ jobs:
   
     - name: Get Last Commit ID
       id: last_commit
-      run: echo "::set-env name=COMMIT_ID::$(git rev-parse --short HEAD)"
+      run: echo "COMMIT_ID=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
     - name: Upload APK to Release
       env:
         GITHUB_TOKEN: ${{ secrets.PAT }}
-        COMMIT_ID: ${{ steps.last_commit.outputs.COMMIT_ID }}
+        COMMIT_ID: ${{ env.COMMIT_ID }}
       run: |
         curl -X POST "https://api.github.com/repos/SocialTask/SocialTask/releases/${COMMIT_ID}/assets?name=SocialTask.apk" \
           -H "Authorization: token $GITHUB_TOKEN" \
