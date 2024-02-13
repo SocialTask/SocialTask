@@ -53,4 +53,4 @@ jobs:
         curl -X POST "https://api.github.com/repos/SocialTask/SocialTask/releases/${COMMIT_ID}/assets?name=SocialTask.apk" \
           -H "Authorization: token $GITHUB_TOKEN" \
           -H "Content-Type: application/vnd.android.package-archive" \
-          --data-binary "@app/build/app/outputs/flutter-apk/app-release.apk"
+          --data-binary "@build/app/outputs/flutter-apk/app-release.apk"
