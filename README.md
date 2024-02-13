@@ -22,6 +22,7 @@
     <img src="https://img.shields.io/github/issues/SocialTask/SocialTask?style=for-the-badge" alt="GitHub issues" />
     <img src="https://img.shields.io/github/forks/SocialTask/SocialTask?style=for-the-badge" alt="GitHub forks" />
     <img src="https://img.shields.io/github/issues-pr/SocialTask/SocialTask?style=for-the-badge" alt="GitHub PRs" />
+    <img src="https://api.codemagic.io/apps/65cb8913bb789d18b146b167/65cb8913bb789d18b146b166/status_badge.svg" href="https://codemagic.io/apps/65cb8913bb789d18b146b167/65cb8913bb789d18b146b166/latest_build" alt="Codemagic build status" />
 </p>
 
 ## 📱Screenshots
