@@ -16,7 +16,7 @@
     <a href="#-contribution">Contribution</a>
 </div>
 
-<p align="center" style="margin-top: 10px;">
+<p align="center" style="margin-top: 50px;">
     <img src="https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white" alt="Flutter Badge" />
     <img src="https://img.shields.io/github/stars/SocialTask/SocialTask?style=for-the-badge" alt="GitHub Repo stars" />
     <img src="https://img.shields.io/github/issues/SocialTask/SocialTask?style=for-the-badge" alt="GitHub issues" />
