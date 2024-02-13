@@ -26,14 +26,8 @@
 
 ## 📱Screenshots
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); grid-gap: 10px;">
-  <img src="https://raw.githubusercontent.com/SocialTask/Assets/main/Screenshots/1707824553965.jpg" alt="Imagen 1" style="width: 100%; height: auto;">
-  <img src="https://raw.githubusercontent.com/SocialTask/Assets/main/Screenshots/1707824553913.jpg" alt="Imagen 2" style="width: 100%; height: auto;">
-  <img src="https://raw.githubusercontent.com/SocialTask/Assets/main/Screenshots/1707824553875.jpg" alt="Imagen 3" style="width: 100%; height: auto;">
-  <img src="https://raw.githubusercontent.com/SocialTask/Assets/main/Screenshots/1707824553895.jpg" alt="Imagen 4" style="width: 100%; height: auto;">
-</div>
+![Screenshots](https://raw.githubusercontent.com/SocialTask/Assets/main/Screenshots.png)
 
----
 ## 🚀 Start
 
 ### 1. Download the [Flutter SDK](https://flutter.dev/docs/get-started/install)
