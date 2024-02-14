@@ -6,6 +6,8 @@ import 'package:intl/intl.dart';
 import 'package:socialtask/utils/backend/users.dart';
 import 'package:socialtask/utils/logger.dart';
 import 'dart:io';
+import 'package:ffmpeg_kit_flutter_min_gpl/ffmpeg_kit.dart';
+import 'package:path_provider/path_provider.dart';
 
 class Post {
   final int id;
@@ -221,17 +223,42 @@ class PostService {
       }
 
       if (videoFile != null) {
-        final videoStream = http.ByteStream(videoFile.openRead());
-        final videoLength = await videoFile.length();
+        final Directory cacheDirectory = await getTemporaryDirectory();
+        customLogger.logInfo('Video file path: ${videoFile.path}');
 
-        final videoUpload = http.MultipartFile(
-          'media',
-          videoStream,
-          videoLength,
-          filename: 'video.mp4', // Set your desired filename and extension
-        );
+        final File convertedVideoFile =
+            File('${cacheDirectory.path}/videoconverted.mp4');
+        if (await convertedVideoFile.exists()) {
+          await convertedVideoFile.delete();
+        }
 
-        request.files.add(videoUpload);
+        try {
+          // Execute the FFmpeg command and wait for it to complete
+          await FFmpegKit.execute(
+              "-i ${videoFile.path} -vf scale=-2:720 -c:v mpeg4 -preset slow -b:v 3000k -b:a 64k ${cacheDirectory.path}/videoconverted.mp4");
+          customLogger.logInfo('Video conversion completed.');
+
+          // Now that the conversion is complete, access the converted file
+          final File convertedVideo =
+              File('${cacheDirectory.path}/videoconverted.mp4');
+          final videoStream = convertedVideo.openRead();
+          final videoLength = await convertedVideo.length();
+
+          final videoUpload = http.MultipartFile(
+            'media',
+            videoStream,
+            videoLength,
+            filename: 'videoconverted.mp4',
+          );
+
+          request.files.add(videoUpload);
+
+          // Continuar con la carga del archivo
+        } catch (e) {
+          customLogger
+              .logError('Error converting video: $e\n${StackTrace.current}');
+          // Manejar el error adecuadamente
+        }
       }
 
       final response = await request.send();
