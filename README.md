@@ -29,16 +29,16 @@
 
 ![Screenshots](https://raw.githubusercontent.com/SocialTask/Assets/main/Screenshots.png)
 
-## 🚀 Start
-
-### 1. Download the [Flutter SDK](https://flutter.dev/docs/get-started/install)
-
 ## 🧞 Features
 
 - Capture photos and videos of your daily missions.
 - Vote for or against other missions.
 - Follow your friends to track their progress.
 - Earn points based on the quality of the completed task.
+  
+## 🚀 Start
+
+### 1. Download the [Flutter SDK](https://flutter.dev/docs/get-started/install)
 
 ## 💻 Installation
 
