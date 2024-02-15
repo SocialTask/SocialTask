@@ -32,8 +32,6 @@ workflows:
           mv -f Runner.app Payload/
           zip -qr Payload.zip Payload/
           mv -f Payload.zip SocialTask.ipa
-          rm -rf Payload
-          rm -f Runner.app.zip
     artifacts:
       - **/*.apk
       - **/*.ipa
