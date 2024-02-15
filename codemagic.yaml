@@ -25,7 +25,7 @@ workflows:
           flutter build apk --release
       - name: Flutter Build iOS
         script: |
-          flutter build ios --release
+          flutter build ios --release --no-codesign
           cd /build/ios/iphoneos/
           unzip -o -qq Runner.app.zip
           mkdir Payload
