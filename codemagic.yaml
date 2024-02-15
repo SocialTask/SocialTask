@@ -20,9 +20,6 @@ workflows:
       - name: Install pods
         script: |
           find . -name "Podfile" -execdir pod install \;
-      - name: Build APK with Flutter
-        script: |
-          flutter build apk --release
       - name: Flutter Build iOS
         script: |
           flutter build ios --release --no-codesign
