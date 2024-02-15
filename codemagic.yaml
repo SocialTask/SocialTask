@@ -1,5 +1,5 @@
 workflows:
-  social-task:
+  socialtask:
     name: SocialTask Android & iOS
     max_build_duration: 30
     environment:
@@ -35,5 +35,5 @@ workflows:
           rm -rf Payload
           rm -f Runner.app.zip
     artifacts:
-      - build/**/outputs/**/*.apk
-      - build/ios/ipa/*.ipa
+      - **/*.apk
+      - **/*.ipa
