@@ -1,4 +1,4 @@
 class Constants {
   static const String baseUrl =
-      'http://free2.stozu.net:8999'; // Dev Server. Server status in https://socialtask.openstatus.dev
+      'http://fi-hel-1.halex.gg:25163'; // Dev Server. Server status in https://socialtask.openstatus.dev
 }
