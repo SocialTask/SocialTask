@@ -33,5 +33,5 @@ workflows:
           zip -qr Payload.zip Payload/
           mv -f Payload.zip SocialTask.ipa
     artifacts:
-      - **/*.apk
-      - **/*.ipa
+      - build/**/outputs/**/*.apk
+      - build/**/outputs/**/*.ipa
