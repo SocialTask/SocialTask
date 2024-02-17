@@ -162,8 +162,8 @@ class _PostCardState extends State<PostCard> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Text(AppLocalizations.of(context).translate('error')),
-                          SizedBox(height: 5.0),
-                          Icon(Icons.error),
+                          const SizedBox(height: 5.0),
+                          const Icon(Icons.error),
                         ],
                       ),
                     ),

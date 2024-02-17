@@ -134,7 +134,7 @@ class _ProfileViewState extends State<ProfileView> {
                     children: <Widget>[
                       Text(
                         AppLocalizations.of(context).translate('tasks'),
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 16.0,
                           fontWeight: FontWeight.bold,
                         ),
@@ -152,7 +152,7 @@ class _ProfileViewState extends State<ProfileView> {
                     children: <Widget>[
                       Text(
                         AppLocalizations.of(context).translate('followers'),
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 16.0,
                           fontWeight: FontWeight.bold,
                         ),
@@ -170,7 +170,7 @@ class _ProfileViewState extends State<ProfileView> {
                     children: <Widget>[
                       Text(
                         AppLocalizations.of(context).translate('following'),
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 16.0,
                           fontWeight: FontWeight.bold,
                         ),

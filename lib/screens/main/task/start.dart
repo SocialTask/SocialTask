@@ -176,7 +176,7 @@ class _StartScreenState extends State<StartScreen> {
               ),
               ListTile(
                 title: Text(
-                    '5 ' + AppLocalizations.of(context).translate('seconds')),
+                    '5 ${AppLocalizations.of(context).translate('seconds')}'),
                 onTap: () {
                   setState(() {
                     _timerDuration = 5;
@@ -186,7 +186,7 @@ class _StartScreenState extends State<StartScreen> {
               ),
               ListTile(
                 title: Text(
-                    '10 ' + AppLocalizations.of(context).translate('seconds')),
+                    '10 ${AppLocalizations.of(context).translate('seconds')}'),
                 onTap: () {
                   setState(() {
                     _timerDuration = 10;
@@ -196,7 +196,7 @@ class _StartScreenState extends State<StartScreen> {
               ),
               ListTile(
                 title: Text(
-                    '15 ' + AppLocalizations.of(context).translate('seconds')),
+                    '15 ${AppLocalizations.of(context).translate('seconds')}'),
                 onTap: () {
                   setState(() {
                     _timerDuration = 15;

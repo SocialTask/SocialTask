@@ -60,7 +60,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   },
                   child: Text(
                     AppLocalizations.of(context).translate('joinDailyTask'),
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 30.0,
                       fontWeight: FontWeight.bold,
                       color: Colors
@@ -73,7 +73,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 Text(
                   AppLocalizations.of(context)
                       .translate('colaborateOnSocialTask'),
-                  style: TextStyle(fontSize: 18.0, color: Colors.white),
+                  style: const TextStyle(fontSize: 18.0, color: Colors.white),
                 ),
                 const SizedBox(height: 100),
                 CustomButton(
@@ -125,7 +125,7 @@ class CustomButton extends StatelessWidget {
           alignment: Alignment.center,
           child: Text(
             AppLocalizations.of(context).translate('joinSocialTask'),
-            style: TextStyle(
+            style: const TextStyle(
               color: Color.fromARGB(194, 0, 0, 0),
               fontWeight: FontWeight.bold,
               fontSize: 18.0,

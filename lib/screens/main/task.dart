@@ -119,7 +119,7 @@ class _TaskScreenState extends State<TaskScreen> {
                           Text(
                             AppLocalizations.of(context)
                                 .translate('instructions'),
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,

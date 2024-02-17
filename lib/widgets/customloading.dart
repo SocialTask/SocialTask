@@ -25,7 +25,7 @@ class CustomLoadingDialog extends StatelessWidget {
         children: [
           Text(
             AppLocalizations.of(context).translate('processingImage'),
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
               color: Colors.black87,
@@ -34,10 +34,10 @@ class CustomLoadingDialog extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Text(
               AppLocalizations.of(context).translate('textProcessingImage'),
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
                 color: Colors.black54,
               ),

@@ -102,7 +102,7 @@ class RegisterPage extends StatelessWidget {
             ),
             child: Text(
               AppLocalizations.of(context).translate('signUp'),
-              style: TextStyle(
+              style: const TextStyle(
                 color: Color(0xFFFFFFFF),
                 letterSpacing: 1.5,
                 fontSize: 18.0,
@@ -150,7 +150,7 @@ class RegisterPage extends StatelessWidget {
                         .bodyLarge!
                         .copyWith(color: Colors.white),
                   ),
-                  WidgetSpan(
+                  const WidgetSpan(
                     child: SizedBox(width: 5),
                   ),
                   TextSpan(

@@ -18,7 +18,7 @@ Future<bool> isUserAuthenticated() async {
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key});
+  const MyApp({super.key, Key? key});
 
   @override
   Widget build(BuildContext context) {

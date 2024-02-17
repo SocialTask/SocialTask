@@ -89,8 +89,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-              AppLocalizations.of(context).translate('profilePicUpdateError') +
-                  ': $e'),
+              '${AppLocalizations.of(context).translate('profilePicUpdateError')}: $e'),
         ),
       );
     }
@@ -122,12 +121,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
             padding: EdgeInsets.zero,
             children: [
               DrawerHeader(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.blue,
                 ),
                 child: Text(
                   AppLocalizations.of(context).translate('menu'),
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 24,
                   ),
@@ -339,7 +338,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 },
                 child: Text(
                   AppLocalizations.of(context).translate('close'),
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.blue,
                     fontSize: 16.0,
                   ),

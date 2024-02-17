@@ -10,7 +10,7 @@ final TextEditingController loginEmailController = TextEditingController();
 final TextEditingController loginPasswordController = TextEditingController();
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -108,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 child: Text(
                   AppLocalizations.of(context).translate('login'),
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Color(0xFFFFFFFF),
                     letterSpacing: 1.5,
                     fontSize: 18.0,
@@ -122,7 +122,7 @@ class _LoginPageState extends State<LoginPage> {
                   // Obtener la cadena de texto traducida
                   AppLocalizations.of(context)
                       .translate('incorrectPasswordMessage'),
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.red,
                     fontSize: 16.0,
                   ),
@@ -169,7 +169,7 @@ class _LoginPageState extends State<LoginPage> {
                         .bodyLarge!
                         .copyWith(color: Colors.white),
                   ),
-                  WidgetSpan(
+                  const WidgetSpan(
                     child: SizedBox(width: 5),
                   ),
                   TextSpan(

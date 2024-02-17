@@ -52,8 +52,7 @@ class _PostScreenState extends State<PostScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-                AppLocalizations.of(context).translate('errorCreatingPost') +
-                    '$e'),
+                '${AppLocalizations.of(context).translate('errorCreatingPost')}$e'),
             backgroundColor: Colors.red,
           ),
         );
@@ -158,7 +157,7 @@ class _PostScreenState extends State<PostScreen> {
                   ? const CircularProgressIndicator()
                   : Text(
                       AppLocalizations.of(context).translate('publish'),
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 16,
                       ),
