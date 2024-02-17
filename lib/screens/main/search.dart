@@ -5,6 +5,7 @@ import 'package:socialtask/utils/api/search.dart';
 import 'package:socialtask/utils/api/users.dart';
 import 'package:socialtask/utils/api/profile.dart';
 import 'package:socialtask/utils/logger.dart';
+import 'package:socialtask/utils/lang.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -74,7 +75,7 @@ class _SearchScreenState extends State<SearchScreen> {
               child: TextField(
                 controller: _searchController,
                 decoration: InputDecoration(
-                  labelText: 'Search Users',
+                  labelText: AppLocalizations.of(context).translate('search'),
                   prefixIcon: const Icon(Icons.search),
                   suffixIcon: IconButton(
                     icon: const Icon(Icons.clear),

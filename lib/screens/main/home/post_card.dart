@@ -10,6 +10,7 @@ import 'package:socialtask/utils/api/post.dart';
 import 'package:socialtask/utils/constants.dart';
 import 'package:socialtask/utils/api/profile.dart';
 import 'package:socialtask/screens/main/social/user.dart';
+import 'package:socialtask/utils/lang.dart';
 
 class PostCard extends StatefulWidget {
   final Post post;
@@ -156,11 +157,11 @@ class _PostCardState extends State<PostCard> {
                 },
                 errorBuilder: (context, error, stackTrace) {
                   return Container(
-                    child: const Center(
+                    child: Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text('An error has occurred'),
+                          Text(AppLocalizations.of(context).translate('error')),
                           SizedBox(height: 5.0),
                           Icon(Icons.error),
                         ],
@@ -253,9 +254,10 @@ class _PostCardState extends State<PostCard> {
               trailing: userProfile?.userId == widget.post.userId
                   ? PopupMenuButton(
                       itemBuilder: (context) => [
-                        const PopupMenuItem(
+                        PopupMenuItem(
                           value: 'delete',
-                          child: Text('Delete Post'),
+                          child: Text(AppLocalizations.of(context)
+                              .translate('deletePost')),
                         ),
                       ],
                       onSelected: (value) {

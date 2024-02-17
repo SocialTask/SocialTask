@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:socialtask/utils/lang.dart';
 
 class AnimatedButton extends StatefulWidget {
   final VoidCallback onPressed; // Callback function to handle button press
@@ -40,8 +41,8 @@ class _AnimatedButtonState extends State<AnimatedButton> {
               : const LinearGradient(
                   colors: [Color(0xFFFFCC00), Colors.orange]),
         ),
-        child: const Text(
-          'START',
+        child: Text(
+          AppLocalizations.of(context).translate('start'),
           style: TextStyle(
               fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white),
         ),

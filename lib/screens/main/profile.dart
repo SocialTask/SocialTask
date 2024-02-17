@@ -9,6 +9,7 @@ import 'package:socialtask/utils/api/profile.dart';
 import 'package:socialtask/utils/api/post.dart';
 import 'package:socialtask/utils/api/auth.dart';
 import 'package:socialtask/dev/screens/changeserver.dart';
+import 'package:socialtask/utils/lang.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -78,15 +79,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
         await saveUserProfileToSharedPreferences(userProfile);
 
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Profile picture updated successfully'),
+          SnackBar(
+            content: Text(
+                AppLocalizations.of(context).translate('profilePicUpdated')),
           ),
         );
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Failed to update profile picture: $e'),
+          content: Text(
+              AppLocalizations.of(context).translate('profilePicUpdateError') +
+                  ': $e'),
         ),
       );
     }
@@ -103,7 +107,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       onRefresh: refreshProfile,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Profile'),
+          title: Text(AppLocalizations.of(context).translate('profile')),
           actions: [
             IconButton(
               icon: const Icon(Icons.notifications), // Icono de notificaciones
@@ -117,12 +121,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
-              const DrawerHeader(
+              DrawerHeader(
                 decoration: BoxDecoration(
                   color: Colors.blue,
                 ),
                 child: Text(
-                  'Menu',
+                  AppLocalizations.of(context).translate('menu'),
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 24,
@@ -130,14 +134,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               ListTile(
-                title: const Text('Settings (Working)'),
+                title: Text(AppLocalizations.of(context).translate('settings')),
                 onTap: () {
                   // Handle settings tap
                   Navigator.pop(context);
                 },
               ),
               ListTile(
-                title: const Text('Edit Profile (Working)'),
+                title:
+                    Text(AppLocalizations.of(context).translate('editProfile')),
                 onTap: () {
                   // Handle edit profile tap
                   Navigator.pop(context);
@@ -145,7 +150,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               ListTile(
                 leading: const Icon(Icons.exit_to_app),
-                title: const Text('Log Out'),
+                title: Text(AppLocalizations.of(context).translate('logout')),
                 onTap: () {
                   // Handle edit profile tap
                   AuthService().logoutUser(context);
@@ -218,16 +223,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    _buildProfileInfo('Tasks', userProfile.madeTasks),
+                    _buildProfileInfo(
+                        AppLocalizations.of(context).translate('tasks'),
+                        userProfile.madeTasks),
                     const SizedBox(width: 20.0),
-                    _buildProfileInfo('Followers', userProfile.followersCount),
+                    _buildProfileInfo(
+                        AppLocalizations.of(context).translate('followers'),
+                        userProfile.followersCount),
                     const SizedBox(width: 20.0),
-                    _buildProfileInfo('Following', userProfile.followingCount),
+                    _buildProfileInfo(
+                        AppLocalizations.of(context).translate('following'),
+                        userProfile.followingCount),
                   ],
                 ),
                 const SizedBox(height: 20.0),
                 Text(
-                  'Privacy Setting: ${userProfile.privacySetting}',
+                  "${AppLocalizations.of(context).translate('privacySetting')}: ${userProfile.privacySetting}",
                   style: const TextStyle(
                     fontSize: 16.0,
                     color: Colors.grey,
@@ -326,8 +337,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: const Text(
-                  'Cerrar',
+                child: Text(
+                  AppLocalizations.of(context).translate('close'),
                   style: TextStyle(
                     color: Colors.blue,
                     fontSize: 16.0,

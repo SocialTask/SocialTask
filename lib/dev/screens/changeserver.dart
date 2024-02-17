@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:socialtask/utils/constants.dart';
 
 class ChangeServerScreen extends StatefulWidget {
-  const ChangeServerScreen({Key? key}) : super(key: key);
+  const ChangeServerScreen({super.key});
 
   @override
   _ChangeServerScreenState createState() => _ChangeServerScreenState();
@@ -72,11 +72,11 @@ class _ChangeServerScreenState extends State<ChangeServerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Change Server'),
+        title: const Text('Change Server'),
       ),
       body: Center(
         child: servers.isEmpty
-            ? CircularProgressIndicator()
+            ? const CircularProgressIndicator()
             : ListView.builder(
                 itemCount: servers.length,
                 itemBuilder: (context, index) {

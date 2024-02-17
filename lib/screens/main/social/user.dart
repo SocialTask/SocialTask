@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:socialtask/utils/api/users.dart';
 import 'package:socialtask/utils/api/follow.dart';
 import 'package:socialtask/utils/api/post.dart';
+import 'package:socialtask/utils/lang.dart';
 
 // ignore: must_be_immutable
 class ProfileView extends StatefulWidget {
@@ -131,8 +132,8 @@ class _ProfileViewState extends State<ProfileView> {
                 children: <Widget>[
                   Column(
                     children: <Widget>[
-                      const Text(
-                        'Tasks',
+                      Text(
+                        AppLocalizations.of(context).translate('tasks'),
                         style: TextStyle(
                           fontSize: 16.0,
                           fontWeight: FontWeight.bold,
@@ -149,8 +150,8 @@ class _ProfileViewState extends State<ProfileView> {
                   const SizedBox(width: 20.0),
                   Column(
                     children: <Widget>[
-                      const Text(
-                        'Followers',
+                      Text(
+                        AppLocalizations.of(context).translate('followers'),
                         style: TextStyle(
                           fontSize: 16.0,
                           fontWeight: FontWeight.bold,
@@ -167,8 +168,8 @@ class _ProfileViewState extends State<ProfileView> {
                   const SizedBox(width: 20.0),
                   Column(
                     children: <Widget>[
-                      const Text(
-                        'Following',
+                      Text(
+                        AppLocalizations.of(context).translate('following'),
                         style: TextStyle(
                           fontSize: 16.0,
                           fontWeight: FontWeight.bold,
@@ -192,7 +193,9 @@ class _ProfileViewState extends State<ProfileView> {
                     await fetchUserData();
                   },
                   child: Text(
-                    isFollowing ? 'Unfollow' : 'Follow',
+                    isFollowing
+                        ? AppLocalizations.of(context).translate('unfollow')
+                        : AppLocalizations.of(context).translate('follow'),
                     style: const TextStyle(
                       fontSize: 18.0,
                     ),
@@ -256,7 +259,7 @@ class _ProfileViewState extends State<ProfileView> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: const Text('Cerrar'),
+                child: Text(AppLocalizations.of(context).translate('close')),
               ),
             ],
           ),

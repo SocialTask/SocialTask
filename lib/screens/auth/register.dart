@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:socialtask/widgets/background.dart';
 import 'package:socialtask/screens/auth/login.dart';
 import 'package:socialtask/utils/api/auth.dart';
+import 'package:socialtask/utils/lang.dart';
 
 const String logoAssetPath = 'assets/images/logo_500px.png';
 
@@ -46,7 +47,7 @@ class RegisterPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(
-            'REGISTER',
+            AppLocalizations.of(context).translate('signUp'),
             style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
@@ -59,17 +60,19 @@ class RegisterPage extends StatelessWidget {
               children: [
                 _buildInputField(
                     controller: registerUsernameController,
-                    labelText: 'Username',
+                    labelText:
+                        AppLocalizations.of(context).translate('username'),
                     prefixIcon: Icons.person),
                 const SizedBox(height: 20.0),
                 _buildInputField(
                     controller: registerEmailController,
-                    labelText: 'Email',
+                    labelText: AppLocalizations.of(context).translate('email'),
                     prefixIcon: Icons.email),
                 const SizedBox(height: 20.0),
                 _buildInputField(
                     controller: registerPasswordController,
-                    labelText: 'Password',
+                    labelText:
+                        AppLocalizations.of(context).translate('password'),
                     prefixIcon: Icons.lock,
                     obscureText: true),
               ],
@@ -97,8 +100,8 @@ class RegisterPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(30.0),
               ),
             ),
-            child: const Text(
-              'REGISTER',
+            child: Text(
+              AppLocalizations.of(context).translate('signUp'),
               style: TextStyle(
                 color: Color(0xFFFFFFFF),
                 letterSpacing: 1.5,
@@ -110,7 +113,7 @@ class RegisterPage extends StatelessWidget {
           ),
           const SizedBox(height: 10.0),
           Text(
-            '- OR -',
+            AppLocalizations.of(context).translate('or'),
             style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                   color: Colors.white,
                 ),
@@ -141,14 +144,17 @@ class RegisterPage extends StatelessWidget {
               text: TextSpan(
                 children: [
                   TextSpan(
-                    text: 'Already have an account? ',
+                    text: AppLocalizations.of(context).translate('haveAccount'),
                     style: Theme.of(context)
                         .textTheme
                         .bodyLarge!
                         .copyWith(color: Colors.white),
                   ),
+                  WidgetSpan(
+                    child: SizedBox(width: 5),
+                  ),
                   TextSpan(
-                    text: 'Login',
+                    text: AppLocalizations.of(context).translate('login'),
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Constants {
-  static const String BaseUrl = '';
+  static const String BaseUrl = 'http://fi-hel-1.halex.gg:25163';
 
   static String baseUrl = BaseUrl;
 

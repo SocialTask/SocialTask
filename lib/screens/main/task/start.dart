@@ -6,6 +6,7 @@ import 'package:camera/camera.dart';
 import 'package:socialtask/screens/main/task/post.dart';
 import 'package:socialtask/widgets/customloading.dart';
 import 'package:socialtask/utils/logger.dart';
+import 'package:socialtask/utils/lang.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({super.key});
@@ -110,7 +111,9 @@ class _StartScreenState extends State<StartScreen> {
 
   Widget buildCameraPreview() {
     if (!_controller.value.isInitialized) {
-      return const Center(child: Text('Camera initialization failed.'));
+      return Center(
+          child: Text(AppLocalizations.of(context)
+              .translate('cameraInitializationFailed')));
     }
 
     return Expanded(
@@ -158,12 +161,12 @@ class _StartScreenState extends State<StartScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Select Timer Duration'),
+          title: Text(AppLocalizations.of(context).translate('timerDuration')),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               ListTile(
-                title: const Text('No Timer'),
+                title: Text(AppLocalizations.of(context).translate('noTimer')),
                 onTap: () {
                   setState(() {
                     _timerDuration = 0;
@@ -172,7 +175,8 @@ class _StartScreenState extends State<StartScreen> {
                 },
               ),
               ListTile(
-                title: const Text('5 Seconds'),
+                title: Text(
+                    '5 ' + AppLocalizations.of(context).translate('seconds')),
                 onTap: () {
                   setState(() {
                     _timerDuration = 5;
@@ -181,7 +185,8 @@ class _StartScreenState extends State<StartScreen> {
                 },
               ),
               ListTile(
-                title: const Text('10 Seconds'),
+                title: Text(
+                    '10 ' + AppLocalizations.of(context).translate('seconds')),
                 onTap: () {
                   setState(() {
                     _timerDuration = 10;
@@ -190,7 +195,8 @@ class _StartScreenState extends State<StartScreen> {
                 },
               ),
               ListTile(
-                title: const Text('15 Seconds'),
+                title: Text(
+                    '15 ' + AppLocalizations.of(context).translate('seconds')),
                 onTap: () {
                   setState(() {
                     _timerDuration = 15;

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:socialtask/utils/lang.dart';
 
 class CustomLoadingDialog extends StatelessWidget {
   const CustomLoadingDialog({super.key});
@@ -22,8 +23,8 @@ class CustomLoadingDialog extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Text(
-            'Processing Image',
+          Text(
+            AppLocalizations.of(context).translate('processingImage'),
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
@@ -32,10 +33,10 @@ class CustomLoadingDialog extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 10),
-          const Padding(
+          Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: Text(
-              'Please wait while we process your image. This may take a moment.',
+              AppLocalizations.of(context).translate('textProcessingImage'),
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.black54,

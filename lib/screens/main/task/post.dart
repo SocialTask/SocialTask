@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:video_player/video_player.dart';
 import 'package:socialtask/utils/api/post.dart';
 import 'package:socialtask/utils/logger.dart';
+import 'package:socialtask/utils/lang.dart';
 
 class PostScreen extends StatefulWidget {
   final File? imageFile;
@@ -38,8 +39,9 @@ class _PostScreenState extends State<PostScreen> {
         }
 
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Post created successfully'),
+          SnackBar(
+            content:
+                Text(AppLocalizations.of(context).translate('postCreated')),
             backgroundColor: Colors.green,
           ),
         );
@@ -49,7 +51,9 @@ class _PostScreenState extends State<PostScreen> {
         customLogger.logError('Error creating post: $e');
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Error creating post: $e'),
+            content: Text(
+                AppLocalizations.of(context).translate('errorCreatingPost') +
+                    '$e'),
             backgroundColor: Colors.red,
           ),
         );
@@ -60,8 +64,9 @@ class _PostScreenState extends State<PostScreen> {
       }
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Please enter some content'),
+        SnackBar(
+          content:
+              Text(AppLocalizations.of(context).translate('pleaseAddContent')),
           backgroundColor: Colors.orange,
         ),
       );
@@ -130,8 +135,9 @@ class _PostScreenState extends State<PostScreen> {
               maxLines: null,
               keyboardType: TextInputType.multiline,
               decoration: InputDecoration(
-                hintText: 'Write your post...',
-                labelText: 'Post Content',
+                hintText: AppLocalizations.of(context).translate('writePost'),
+                labelText:
+                    AppLocalizations.of(context).translate('postContent'),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
@@ -150,8 +156,8 @@ class _PostScreenState extends State<PostScreen> {
               ),
               child: _isPublishing
                   ? const CircularProgressIndicator()
-                  : const Text(
-                      'Publish',
+                  : Text(
+                      AppLocalizations.of(context).translate('publish'),
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,

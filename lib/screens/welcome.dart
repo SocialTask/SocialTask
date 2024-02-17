@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:socialtask/screens/auth/login.dart';
 import 'package:socialtask/widgets/background.dart';
+import 'package:socialtask/utils/lang.dart';
 
 const String logoAssetPath = 'assets/images/logo_500px.png';
 
@@ -57,8 +58,8 @@ class _WelcomePageState extends State<WelcomePage> {
                       end: Alignment.centerRight,
                     ).createShader(bounds);
                   },
-                  child: const Text(
-                    'Join our daily Task!',
+                  child: Text(
+                    AppLocalizations.of(context).translate('joinDailyTask'),
                     style: TextStyle(
                       fontSize: 30.0,
                       fontWeight: FontWeight.bold,
@@ -69,8 +70,9 @@ class _WelcomePageState extends State<WelcomePage> {
                 ),
 
                 const SizedBox(height: 10.0),
-                const Text(
-                  'Collaborate to make a better world.',
+                Text(
+                  AppLocalizations.of(context)
+                      .translate('colaborateOnSocialTask'),
                   style: TextStyle(fontSize: 18.0, color: Colors.white),
                 ),
                 const SizedBox(height: 100),
@@ -121,8 +123,8 @@ class CustomButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(5.0),
           ),
           alignment: Alignment.center,
-          child: const Text(
-            'Join SocialTask',
+          child: Text(
+            AppLocalizations.of(context).translate('joinSocialTask'),
             style: TextStyle(
               color: Color.fromARGB(194, 0, 0, 0),
               fontWeight: FontWeight.bold,

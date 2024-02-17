@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:socialtask/widgets/background.dart';
 import 'register.dart';
 import 'package:socialtask/utils/api/auth.dart';
+import 'package:socialtask/utils/lang.dart';
 
 const String logoAssetPath = 'assets/images/logo_500px.png';
 
@@ -9,21 +10,13 @@ final TextEditingController loginEmailController = TextEditingController();
 final TextEditingController loginPasswordController = TextEditingController();
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
-  Text incorrectPasswordMessage = const Text(
-    'Incorrect email or password. Please try again.',
-    style: TextStyle(
-      color: Colors.red,
-      fontSize: 16.0,
-    ),
-  );
-
   bool showIncorrectPasswordMessage = false;
 
   @override
@@ -58,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(
-            'LOGIN',
+            AppLocalizations.of(context).translate('login'),
             style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
@@ -71,12 +64,13 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 _buildInputField(
                     controller: loginEmailController,
-                    labelText: 'Email',
+                    labelText: AppLocalizations.of(context).translate('email'),
                     prefixIcon: Icons.email),
                 const SizedBox(height: 20.0),
                 _buildInputField(
                     controller: loginPasswordController,
-                    labelText: 'Password',
+                    labelText:
+                        AppLocalizations.of(context).translate('password'),
                     prefixIcon: Icons.lock,
                     obscureText: true),
               ],
@@ -112,8 +106,8 @@ class _LoginPageState extends State<LoginPage> {
                     borderRadius: BorderRadius.circular(30.0),
                   ),
                 ),
-                child: const Text(
-                  'LOGIN',
+                child: Text(
+                  AppLocalizations.of(context).translate('login'),
                   style: TextStyle(
                     color: Color(0xFFFFFFFF),
                     letterSpacing: 1.5,
@@ -123,12 +117,21 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              if (showIncorrectPasswordMessage) incorrectPasswordMessage,
+              if (showIncorrectPasswordMessage)
+                Text(
+                  // Obtener la cadena de texto traducida
+                  AppLocalizations.of(context)
+                      .translate('incorrectPasswordMessage'),
+                  style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 16.0,
+                  ),
+                ),
             ],
           ),
           const SizedBox(height: 10.0),
           Text(
-            '- OR -',
+            AppLocalizations.of(context).translate('or'),
             style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                   color: Colors.white,
                 ),
@@ -159,16 +162,22 @@ class _LoginPageState extends State<LoginPage> {
               text: TextSpan(
                 children: [
                   TextSpan(
-                    text: 'Don\'t have an Account? ',
+                    text: AppLocalizations.of(context)
+                        .translate('dontHaveAccount'),
                     style: Theme.of(context)
                         .textTheme
                         .bodyLarge!
                         .copyWith(color: Colors.white),
                   ),
+                  WidgetSpan(
+                    child: SizedBox(width: 5),
+                  ),
                   TextSpan(
-                    text: 'Sign Up',
+                    text: AppLocalizations.of(context).translate('signUp'),
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        color: Colors.white, fontWeight: FontWeight.bold),
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                   ),
                 ],
               ),

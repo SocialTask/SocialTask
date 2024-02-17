@@ -7,6 +7,7 @@ import 'package:socialtask/widgets/background.dart';
 import 'package:socialtask/widgets/animatedbutton.dart';
 import 'package:socialtask/screens/main/task/start.dart';
 import 'package:socialtask/utils/logger.dart';
+import 'package:socialtask/utils/lang.dart';
 
 class TaskScreen extends StatefulWidget {
   const TaskScreen({super.key});
@@ -80,7 +81,7 @@ class _TaskScreenState extends State<TaskScreen> {
                     totalRepeatCount: 1,
                     animatedTexts: [
                       ColorizeAnimatedText(
-                        'Daily Task',
+                        AppLocalizations.of(context).translate('dailyTask'),
                         textStyle: const TextStyle(
                           fontSize: 48,
                           fontWeight: FontWeight.bold,
@@ -104,7 +105,9 @@ class _TaskScreenState extends State<TaskScreen> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           Text(
-                            task!.description ?? 'No description available',
+                            task!.description ??
+                                AppLocalizations.of(context)
+                                    .translate('missingDescriptionTask'),
                             style: const TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
@@ -113,8 +116,9 @@ class _TaskScreenState extends State<TaskScreen> {
                           ),
                           const SizedBox(height: 10),
                           const SizedBox(height: 20),
-                          const Text(
-                            '-- Instructions --',
+                          Text(
+                            AppLocalizations.of(context)
+                                .translate('instructions'),
                             style: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
@@ -127,21 +131,21 @@ class _TaskScreenState extends State<TaskScreen> {
                                 .start, // Align features to the start
                             children: <Widget>[
                               Text(
-                                '· ${task!.feature1 ?? 'Not available'}',
+                                '· ${task!.feature1 ?? AppLocalizations.of(context).translate('notAvailable')}',
                                 style: const TextStyle(
                                   fontSize: 18,
                                   color: Colors.white,
                                 ),
                               ),
                               Text(
-                                '· ${task!.feature2 ?? 'Not available'}',
+                                '· ${task!.feature2 ?? AppLocalizations.of(context).translate('notAvailable')}',
                                 style: const TextStyle(
                                   fontSize: 18,
                                   color: Colors.white,
                                 ),
                               ),
                               Text(
-                                '· ${task!.feature3 ?? 'Not available'}',
+                                '· ${task!.feature3 ?? AppLocalizations.of(context).translate('notAvailable')}',
                                 style: const TextStyle(
                                   fontSize: 18,
                                   color: Colors.white,
