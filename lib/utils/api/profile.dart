@@ -2,7 +2,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import '../constants.dart';
 import 'dart:io';
 
 class Profile {
@@ -80,7 +80,8 @@ class ProfileService {
       return true; // Cache is expired if it has never been fetched
     }
     // Check if the difference between current time and last fetch time is more than 1 minute
-    return DateTime.now().difference(_lastFetchTime!) > const Duration(minutes: 1);
+    return DateTime.now().difference(_lastFetchTime!) >
+        const Duration(minutes: 1);
   }
 
   // Function to save profile data in SharedPreferences

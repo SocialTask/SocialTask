@@ -1,7 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'constants.dart';
+import '../constants.dart';
 import 'package:intl/intl.dart';
 import 'package:socialtask/utils/api/users.dart';
 import 'package:socialtask/utils/logger.dart';

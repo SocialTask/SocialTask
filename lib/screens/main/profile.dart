@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:socialtask/utils/api/profile.dart';
 import 'package:socialtask/utils/api/post.dart';
 import 'package:socialtask/utils/api/auth.dart';
+import 'package:socialtask/dev/screens/changeserver.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -148,6 +149,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 onTap: () {
                   // Handle edit profile tap
                   AuthService().logoutUser(context);
+                },
+              ),
+              ListTile(
+                title: const Text('Change Dev Server'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    PageRouteBuilder(
+                      pageBuilder: (context, animation1, animation2) =>
+                          const ChangeServerScreen(),
+                      transitionDuration: Duration.zero,
+                      reverseTransitionDuration: Duration.zero,
+                    ),
+                  );
                 },
               ),
               // Add more options as needed

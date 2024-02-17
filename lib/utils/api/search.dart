@@ -2,7 +2,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:socialtask/utils/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'constants.dart';
+import '../constants.dart';
 import 'package:socialtask/utils/api/users.dart';
 
 class SearchService {

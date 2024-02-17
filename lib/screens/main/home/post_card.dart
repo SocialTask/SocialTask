@@ -7,7 +7,7 @@ import 'package:video_player/video_player.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:visibility_detector/visibility_detector.dart';
 import 'package:socialtask/utils/api/post.dart';
-import 'package:socialtask/utils/api/constants.dart';
+import 'package:socialtask/utils/constants.dart';
 import 'package:socialtask/utils/api/profile.dart';
 import 'package:socialtask/screens/main/social/user.dart';
 

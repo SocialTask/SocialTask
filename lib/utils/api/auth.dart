@@ -7,12 +7,12 @@ import 'package:socialtask/screens/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:socialtask/utils/api/profile.dart';
 
-import 'constants.dart';
+import '../constants.dart';
 
 class AuthService {
   Future<bool> loginUser(
       BuildContext context, String email, String password) async {
-    const url = '${Constants.baseUrl}/login';
+    String url = '${Constants.baseUrl}/login';
 
     try {
       final response = await http.post(
@@ -56,7 +56,7 @@ class AuthService {
 
   Future<void> registerUser(BuildContext context, String username, String email,
       String password) async {
-    const url = '${Constants.baseUrl}/register';
+    String url = '${Constants.baseUrl}/register';
 
     try {
       final response = await http.post(
