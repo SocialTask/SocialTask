@@ -80,7 +80,7 @@ class ProfileService {
       return true; // Cache is expired if it has never been fetched
     }
     // Check if the difference between current time and last fetch time is more than 1 minute
-    return DateTime.now().difference(_lastFetchTime!) > Duration(minutes: 1);
+    return DateTime.now().difference(_lastFetchTime!) > const Duration(minutes: 1);
   }
 
   // Function to save profile data in SharedPreferences

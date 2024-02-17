@@ -105,7 +105,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           title: const Text('Profile'),
           actions: [
             IconButton(
-              icon: Icon(Icons.notifications), // Icono de notificaciones
+              icon: const Icon(Icons.notifications), // Icono de notificaciones
               onPressed: () {
                 // Aquí puedes implementar la lógica para ver los likes y nuevos seguidores
               },

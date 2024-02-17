@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:socialtask/widgets/background.dart';
 import 'package:socialtask/widgets/animatedbutton.dart';
 import 'package:socialtask/screens/main/task/start.dart';
+import 'package:socialtask/utils/logger.dart';
 
 class TaskScreen extends StatefulWidget {
   const TaskScreen({super.key});
@@ -47,7 +48,7 @@ class _TaskScreenState extends State<TaskScreen> {
         task = fetchedTask;
       });
     } catch (e) {
-      print('Error fetching task: $e');
+      customLogger.logError('Error fetching task: $e');
     }
   }
 

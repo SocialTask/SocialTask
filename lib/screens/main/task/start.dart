@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:socialtask/screens/main/task/post.dart';
 import 'package:socialtask/widgets/customloading.dart';
+import 'package:socialtask/utils/logger.dart';
 
 class StartScreen extends StatefulWidget {
-  const StartScreen({Key? key}) : super(key: key);
+  const StartScreen({super.key});
 
   @override
   _StartScreenState createState() => _StartScreenState();
@@ -235,7 +236,7 @@ class _StartScreenState extends State<StartScreen> {
         });
       });
     } catch (e) {
-      print('Error starting video recording: $e');
+      customLogger.logError('Error starting video recording: $e');
       // Handle error as needed, maybe notify the user
     }
   }
@@ -261,7 +262,7 @@ class _StartScreenState extends State<StartScreen> {
         );
       });
     } catch (e) {
-      print('Error stopping video recording: $e');
+      customLogger.logError('Error stopping video recording: $e');
       // Handle error as needed, maybe notify the user
     }
   }
@@ -302,7 +303,7 @@ class _StartScreenState extends State<StartScreen> {
       );
     } catch (e) {
       // Manejar el error
-      print('Error taking picture and posting: $e');
+      customLogger.logError('Error taking picture and posting: $e');
       // Ocultar el diálogo de carga en caso de error
       Navigator.of(context).pop();
     }

@@ -4,6 +4,7 @@ import 'package:socialtask/screens/main/social/user.dart';
 import 'package:socialtask/utils/backend/search.dart';
 import 'package:socialtask/utils/backend/users.dart';
 import 'package:socialtask/utils/backend/profile.dart';
+import 'package:socialtask/utils/logger.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -115,7 +116,7 @@ class _SearchScreenState extends State<SearchScreen> {
           });
         }
       } catch (e) {
-        print('Error searching users: $e');
+        customLogger.logError('Error searching users: $e');
       }
     }
   }

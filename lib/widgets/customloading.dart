@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomLoadingDialog extends StatelessWidget {
-  const CustomLoadingDialog({Key? key}) : super(key: key);
+  const CustomLoadingDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class CustomLoadingDialog extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
+          const Text(
             'Processing Image',
             style: TextStyle(
               fontSize: 24,
@@ -32,8 +32,8 @@ class CustomLoadingDialog extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
             child: Text(
               'Please wait while we process your image. This may take a moment.',
               style: TextStyle(
@@ -48,7 +48,7 @@ class CustomLoadingDialog extends StatelessWidget {
             height: 10,
             child: LinearProgressIndicator(
               backgroundColor: Colors.grey[300],
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+              valueColor: const AlwaysStoppedAnimation<Color>(Colors.blue),
             ),
           ),
           const SizedBox(height: 20),

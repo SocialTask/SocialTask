@@ -109,7 +109,7 @@ class AuthService {
         ),
       );
     } catch (e) {
-      print('Error al cerrar sesión: $e');
+      customLogger.logError('Error al cerrar sesión: $e');
     }
   }
 }

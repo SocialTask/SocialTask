@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:socialtask/utils/backend/post.dart';
 import 'package:socialtask/utils/backend/users.dart';
 import 'package:socialtask/screens/main/home/post_card.dart';
+import 'package:socialtask/utils/logger.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -68,8 +69,8 @@ class _HomeScreenState extends State<HomeScreen> {
         page++; // Incrementar la página para la próxima carga
       });
     } catch (e, stackTrace) {
-      print("Error fetching posts: $e");
-      print(stackTrace);
+      customLogger.logError("Error fetching posts: $e");
+      customLogger.logError(stackTrace.toString());
       if (mounted) {
         setState(() {
           isLoading = false;
@@ -86,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
         await PostService().downvotePost(post.id);
       }
     } catch (e) {
-      print("Error voting: $e");
+      customLogger.logError("Error voting: $e");
     }
   }
 

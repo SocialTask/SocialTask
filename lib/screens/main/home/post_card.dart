@@ -253,7 +253,7 @@ class _PostCardState extends State<PostCard> {
               trailing: userProfile?.userId == widget.post.userId
                   ? PopupMenuButton(
                       itemBuilder: (context) => [
-                        PopupMenuItem(
+                        const PopupMenuItem(
                           value: 'delete',
                           child: Text('Delete Post'),
                         ),
