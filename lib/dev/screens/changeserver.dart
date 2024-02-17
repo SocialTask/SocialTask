@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'dart:async';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:socialtask/utils/constants.dart';
 
 class ChangeServerScreen extends StatefulWidget {
-  const ChangeServerScreen({Key? key})
-      : super(key: key ?? const Key('ChangeServer'));
+  const ChangeServerScreen({Key? key}) : super(key: key);
 
   @override
   _ChangeServerScreenState createState() => _ChangeServerScreenState();
 }
 
 class _ChangeServerScreenState extends State<ChangeServerScreen> {
-  List<String> servers = [];
+  late List<Map<String, dynamic>> servers;
+  late Map<String, Duration> responseTimes;
 
   @override
   void initState() {
     super.initState();
+    servers = [];
+    responseTimes = {};
     _getServers();
   }
 
@@ -28,8 +31,9 @@ class _ChangeServerScreenState extends State<ChangeServerScreen> {
       final jsonData = json.decode(response.body);
       if (jsonData['servers'] != null) {
         setState(() {
-          servers = List<String>.from(jsonData['servers']);
+          servers = List<Map<String, dynamic>>.from(jsonData['servers']);
         });
+        await _checkServers();
       }
     } catch (error) {
       print('Error fetching servers: $error');
@@ -44,17 +48,31 @@ class _ChangeServerScreenState extends State<ChangeServerScreen> {
     });
   }
 
+  Future<void> _checkServers() async {
+    for (var server in servers) {
+      final url = server['url'];
+      final startTime = DateTime.now();
+      try {
+        await http.get(Uri.parse('$url/ping'));
+        final endTime = DateTime.now();
+        final duration = endTime.difference(startTime);
+        setState(() {
+          responseTimes[url] = duration;
+        });
+      } catch (error) {
+        print('Error checking server status: $error');
+        setState(() {
+          responseTimes[url] = Duration.zero;
+        });
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Change Server'),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
       ),
       body: Center(
         child: servers.isEmpty
@@ -62,11 +80,26 @@ class _ChangeServerScreenState extends State<ChangeServerScreen> {
             : ListView.builder(
                 itemCount: servers.length,
                 itemBuilder: (context, index) {
+                  final server = servers[index];
+                  final url = server['url'];
+                  final responseTime = responseTimes[url];
+                  IconData icon =
+                      responseTime != null && responseTime.inMilliseconds > 0
+                          ? Icons.check_circle
+                          : Icons.error;
+                  Color color =
+                      responseTime != null && responseTime.inMilliseconds > 0
+                          ? Colors.green
+                          : Colors.red;
                   return ListTile(
-                    title: Text(servers[index]),
+                    title: Text(server['name']),
+                    subtitle: responseTime != null
+                        ? Text(
+                            'Response Time: ${responseTime.inMilliseconds} ms')
+                        : null,
+                    trailing: Icon(icon, color: color),
                     onTap: () {
-                      _saveSelectedServer(servers[index]);
-                      print('Selected server: ${servers[index]}');
+                      _saveSelectedServer(url);
                     },
                   );
                 },
