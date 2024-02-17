@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:socialtask/screens/main/social/user.dart';
-import 'package:socialtask/utils/backend/search.dart';
-import 'package:socialtask/utils/backend/users.dart';
-import 'package:socialtask/utils/backend/profile.dart';
+import 'package:socialtask/utils/api/search.dart';
+import 'package:socialtask/utils/api/users.dart';
+import 'package:socialtask/utils/api/profile.dart';
 import 'package:socialtask/utils/logger.dart';
 
 class SearchScreen extends StatefulWidget {

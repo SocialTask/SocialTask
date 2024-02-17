@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'dart:async';
-import 'package:socialtask/utils/backend/task.dart';
+import 'package:socialtask/utils/api/task.dart';
 import 'package:provider/provider.dart';
 import 'package:socialtask/widgets/background.dart';
 import 'package:socialtask/widgets/animatedbutton.dart';

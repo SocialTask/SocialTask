@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:video_player/video_player.dart';
-import 'package:socialtask/utils/backend/post.dart';
+import 'package:socialtask/utils/api/post.dart';
 import 'package:socialtask/utils/logger.dart';
 
 class PostScreen extends StatefulWidget {

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:socialtask/utils/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'constants.dart';
-import 'package:socialtask/utils/backend/users.dart';
+import 'package:socialtask/utils/api/users.dart';
 
 class SearchService {
   Future<List<User>> searchUsers(String query) async {

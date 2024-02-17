@@ -5,7 +5,7 @@ import 'package:socialtask/screens/auth/login.dart';
 import 'package:socialtask/utils/logger.dart';
 import 'package:socialtask/screens/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:socialtask/utils/backend/profile.dart';
+import 'package:socialtask/utils/api/profile.dart';
 
 import 'constants.dart';
 

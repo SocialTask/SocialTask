@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:socialtask/utils/backend/users.dart';
-import 'package:socialtask/utils/backend/follow.dart';
-import 'package:socialtask/utils/backend/post.dart';
+import 'package:socialtask/utils/api/users.dart';
+import 'package:socialtask/utils/api/follow.dart';
+import 'package:socialtask/utils/api/post.dart';
 
 // ignore: must_be_immutable
 class ProfileView extends StatefulWidget {

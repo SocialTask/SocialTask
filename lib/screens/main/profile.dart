@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:socialtask/utils/backend/profile.dart';
-import 'package:socialtask/utils/backend/post.dart';
-import 'package:socialtask/utils/backend/auth.dart';
+import 'package:socialtask/utils/api/profile.dart';
+import 'package:socialtask/utils/api/post.dart';
+import 'package:socialtask/utils/api/auth.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});

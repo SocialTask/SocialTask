@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'constants.dart';
 import 'package:intl/intl.dart';
-import 'package:socialtask/utils/backend/users.dart';
+import 'package:socialtask/utils/api/users.dart';
 import 'package:socialtask/utils/logger.dart';
 import 'dart:io';
 import 'package:ffmpeg_kit_flutter_min_gpl/ffmpeg_kit.dart';

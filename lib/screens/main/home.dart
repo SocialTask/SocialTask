@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:socialtask/utils/backend/post.dart';
-import 'package:socialtask/utils/backend/users.dart';
+import 'package:socialtask/utils/api/post.dart';
+import 'package:socialtask/utils/api/users.dart';
 import 'package:socialtask/screens/main/home/post_card.dart';
 import 'package:socialtask/utils/logger.dart';
 
@@ -94,9 +94,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void _scrollListener() {
     if (_scrollController.offset >=
             _scrollController.position.maxScrollExtent - 1000 &&
-        !_scrollController.position.outOfRange &&
-        !isLoading) {
-      // User has reached the end of the list (1000 pixels before the end of the list (when 1 post is remaining aprox)), and it's not already loading
+        !isLoading &&
+        mounted) {
       _loadPosts();
     }
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:socialtask/widgets/background.dart';
 import 'register.dart';
-import 'package:socialtask/utils/backend/auth.dart';
+import 'package:socialtask/utils/api/auth.dart';
 
 const String logoAssetPath = 'assets/images/logo_500px.png';
 
