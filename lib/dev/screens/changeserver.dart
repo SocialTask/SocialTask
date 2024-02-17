@@ -26,17 +26,13 @@ class _ChangeServerScreenState extends State<ChangeServerScreen> {
 
   Future<void> _getServers() async {
     final url = Uri.parse('https://api.npoint.io/c8e4abc483884bbbfcef');
-    try {
-      final response = await http.get(url);
-      final jsonData = json.decode(response.body);
-      if (jsonData['servers'] != null) {
-        setState(() {
-          servers = List<Map<String, dynamic>>.from(jsonData['servers']);
-        });
-        await _checkServers();
-      }
-    } catch (error) {
-      print('Error fetching servers: $error');
+    final response = await http.get(url);
+    final jsonData = json.decode(response.body);
+    if (jsonData['servers'] != null) {
+      setState(() {
+        servers = List<Map<String, dynamic>>.from(jsonData['servers']);
+      });
+      await _checkServers();
     }
   }
 
@@ -60,7 +56,6 @@ class _ChangeServerScreenState extends State<ChangeServerScreen> {
           responseTimes[url] = duration;
         });
       } catch (error) {
-        print('Error checking server status: $error');
         setState(() {
           responseTimes[url] = Duration.zero;
         });
