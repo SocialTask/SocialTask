@@ -20,7 +20,7 @@ class BottomNavigation extends StatelessWidget {
     this.selectedColor = const Color(0xff46BDFA),
     this.unselectedColor = const Color(0xffB5C8E7),
     this.selectedLightColor = const Color(0xff77E2FE),
-  })  : assert(itemIcons.length == 4 || itemIcons.length == 2,
+  }) : assert(itemIcons.length == 4 || itemIcons.length == 2,
             "Item must equal 4 or 2");
 
   @override

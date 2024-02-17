@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:camera/camera.dart';
 import 'dart:async';
 import 'dart:io';
-import 'package:video_player/video_player.dart';
+
+import 'package:flutter/material.dart';
+import 'package:camera/camera.dart';
 import 'package:socialtask/screens/main/task/post.dart';
 import 'package:socialtask/widgets/customloading.dart';
 
 class StartScreen extends StatefulWidget {
-  const StartScreen({super.key});
+  const StartScreen({Key? key}) : super(key: key);
 
   @override
   _StartScreenState createState() => _StartScreenState();
@@ -29,189 +29,11 @@ class _StartScreenState extends State<StartScreen> {
     _initializeControllerFuture = initializeCamera(CameraLensDirection.back);
   }
 
-  Future<void> _captureAndShowImage() async {
-    try {
-      showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (BuildContext context) {
-          return const CustomLoadingDialog(); // Mostrar el diálogo personalizado
-        },
-      );
-
-      await _initializeControllerFuture;
-      final image = await _controller.takePicture();
-
-      final imageFile = File(image.path);
-
-      setState(() {
-        _imageFile = imageFile; // Usar la imagen comprimida
-      });
-
-      Navigator.of(context).pop(); // Cerrar el diálogo de carga
-
-      _showConfirmationDialog(imageFile); // Mostrar el diálogo de confirmación
-    } catch (e) {
-      // Manejar el error
-      print('Error taking picture and posting: $e');
-      // Ocultar el diálogo de carga en caso de error
-      Navigator.of(context).pop();
-    }
-  }
-
-  Future<void> _startRecording() async {
-    try {
-      await Future(() async {
-        await _controller.startVideoRecording();
-        setState(() {
-          _isRecording = true;
-        });
-      });
-    } catch (e) {
-      print('Error starting video recording: $e');
-      // Handle error as needed, maybe notify the user
-    }
-  }
-
-  Future<void> _stopRecording() async {
-    if (!_isRecording) return;
-
-    try {
-      await Future(() async {
-        XFile videoFile = await _controller.stopVideoRecording();
-        setState(() {
-          _isRecording = false;
-        });
-
-        // Call the method to display the recorded video and send confirmation
-        _showVideoConfirmation(videoFile);
-      });
-    } catch (e) {
-      print('Error stopping video recording: $e');
-      // Handle error as needed, maybe notify the user
-    }
-  }
-
-  void _showVideoConfirmation(XFile videoFile) {
-    final VideoPlayerController videoController = VideoPlayerController.file(
-      File(videoFile.path),
-    );
-
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        // Inicializa el controlador y comienza la reproducción del video
-        videoController.initialize().then((_) {
-          videoController.play();
-        });
-
-        return AlertDialog(
-          title: const Text('Video Confirmation'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              AspectRatio(
-                aspectRatio: 9 / 16,
-                child: VideoPlayer(videoController),
-              ),
-              const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () {
-                  // Retoma la grabación
-                  Navigator.of(context).pop();
-                },
-                child: const Text('Retake'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  // Confirmar y navegar a la pantalla PostScreen
-                  Navigator.of(context).pop();
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => PostScreen(
-                        videoFile: File(videoFile.path),
-                      ),
-                    ),
-                  );
-                },
-                child: const Text('Confirm'),
-              ),
-            ],
-          ),
-          // Al cerrar el diálogo, detén la reproducción del video
-          // (Esta parte es opcional)
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                videoController.pause();
-                videoController.dispose();
-                Navigator.of(context).pop();
-              },
-              child: const Text('Close'),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  void _showConfirmationDialog(File imageFile) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Image Confirmation'),
-          content: SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                Image.file(
-                  imageFile,
-                  fit: BoxFit.cover,
-                  height: 200,
-                ),
-                const SizedBox(height: 16),
-                ElevatedButton(
-                  onPressed: () {
-                    // Retake the photo
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text('Retake'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    // Confirm and navigate to the PostScreen
-                    Navigator.of(context).pop();
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => PostScreen(
-                          imageFile: imageFile,
-                        ), // Pass the image File
-                      ),
-                    );
-                  },
-                  child: const Text('Confirm'),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
-
   @override
   void dispose() {
     _controller.dispose();
     _timer.cancel(); // Cancelar el temporizador al cerrar la pantalla
     super.dispose();
-  }
-
-  Widget buildCameraPreview() {
-    if (!_controller.value.isInitialized) {
-      return const Center(child: Text('Camera initialization failed.'));
-    }
-
-    return Expanded(child: CameraPreview(_controller));
   }
 
   @override
@@ -285,6 +107,51 @@ class _StartScreenState extends State<StartScreen> {
     );
   }
 
+  Widget buildCameraPreview() {
+    if (!_controller.value.isInitialized) {
+      return const Center(child: Text('Camera initialization failed.'));
+    }
+
+    return Expanded(
+      child: FittedBox(
+        fit: BoxFit.cover,
+        child: SizedBox(
+          width: _controller.value.previewSize!.height,
+          height: _controller.value.previewSize!.width,
+          child: CameraPreview(_controller),
+        ),
+      ),
+    );
+  }
+
+  Future<void> initializeCamera(CameraLensDirection lensDirection) async {
+    final cameras = await availableCameras();
+    final camera = cameras.firstWhere(
+      (camera) => camera.lensDirection == lensDirection,
+      orElse: () => cameras.first,
+    );
+
+    setState(() {
+      _controller = CameraController(
+        camera,
+        ResolutionPreset.high,
+        imageFormatGroup: ImageFormatGroup.jpeg,
+      );
+      _initializeControllerFuture = _controller.initialize();
+    });
+  }
+
+  void _onSwitchCamera() {
+    final lensDirection = _controller.description.lensDirection;
+    CameraLensDirection newLensDirection;
+    if (lensDirection == CameraLensDirection.back) {
+      newLensDirection = CameraLensDirection.front;
+    } else {
+      newLensDirection = CameraLensDirection.back;
+    }
+    _initializeControllerFuture = initializeCamera(newLensDirection);
+  }
+
   void _setTimer() {
     showDialog(
       context: context,
@@ -337,41 +204,6 @@ class _StartScreenState extends State<StartScreen> {
     );
   }
 
-  void _toggleFlash() {
-    setState(() {
-      _flashEnabled = !_flashEnabled;
-      _controller.setFlashMode(_flashEnabled ? FlashMode.torch : FlashMode.off);
-    });
-  }
-
-  void _onSwitchCamera() {
-    final lensDirection = _controller.description.lensDirection;
-    CameraLensDirection newLensDirection;
-    if (lensDirection == CameraLensDirection.back) {
-      newLensDirection = CameraLensDirection.front;
-    } else {
-      newLensDirection = CameraLensDirection.back;
-    }
-    _initializeControllerFuture = initializeCamera(newLensDirection);
-  }
-
-  Future<void> initializeCamera(CameraLensDirection lensDirection) async {
-    final cameras = await availableCameras();
-    final camera = cameras.firstWhere(
-      (camera) => camera.lensDirection == lensDirection,
-      orElse: () => cameras.first,
-    );
-
-    setState(() {
-      _controller = CameraController(
-        camera,
-        ResolutionPreset.high,
-        imageFormatGroup: ImageFormatGroup.jpeg,
-      );
-      _initializeControllerFuture = _controller.initialize();
-    });
-  }
-
   void startTimer() {
     _timerCountdown = _timerDuration;
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -384,5 +216,95 @@ class _StartScreenState extends State<StartScreen> {
         }
       });
     });
+  }
+
+  void _toggleFlash() {
+    setState(() {
+      _flashEnabled = !_flashEnabled;
+    });
+  }
+
+  Future<void> _startRecording() async {
+    try {
+      await Future(() async {
+        await _controller
+            .setFlashMode(_flashEnabled ? FlashMode.torch : FlashMode.off);
+        await _controller.startVideoRecording();
+        setState(() {
+          _isRecording = true;
+        });
+      });
+    } catch (e) {
+      print('Error starting video recording: $e');
+      // Handle error as needed, maybe notify the user
+    }
+  }
+
+  Future<void> _stopRecording() async {
+    if (!_isRecording) return;
+
+    try {
+      await Future(() async {
+        XFile videoFile = await _controller.stopVideoRecording();
+        await _controller.setFlashMode(FlashMode.off);
+        setState(() {
+          _isRecording = false;
+        });
+
+        // Call the method to display the recorded video and send confirmation
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => PostScreen(
+              videoFile: File(videoFile.path),
+            ),
+          ),
+        );
+      });
+    } catch (e) {
+      print('Error stopping video recording: $e');
+      // Handle error as needed, maybe notify the user
+    }
+  }
+
+  void _captureAndShowImage() async {
+    try {
+      // Restaurar el modo de flash después de tomar la foto
+      _controller
+          .setFlashMode(_flashEnabled ? FlashMode.always : FlashMode.off);
+
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return const CustomLoadingDialog(); // Mostrar el diálogo personalizado
+        },
+      );
+
+      await _initializeControllerFuture;
+      final image = await _controller.takePicture();
+
+      final imageFile = File(image.path);
+
+      setState(() {
+        _imageFile = imageFile; // Usar la imagen comprimida
+      });
+
+      Navigator.of(context).pop(); // Cerrar el diálogo de carga
+
+      _controller.setFlashMode(FlashMode.off);
+
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => PostScreen(
+            imageFile: imageFile,
+          ), // Pasar el archivo de imagen
+        ),
+      );
+    } catch (e) {
+      // Manejar el error
+      print('Error taking picture and posting: $e');
+      // Ocultar el diálogo de carga en caso de error
+      Navigator.of(context).pop();
+    }
   }
 }
