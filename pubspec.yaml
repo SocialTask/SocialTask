@@ -42,7 +42,7 @@ dependencies:
   animated_text_kit: ^4.2.2
   camera: ^0.10.5+9
   image_picker: ^1.0.7
-  ffmpeg_kit_flutter_min_gpl: 6.0.3-LTS
+  ffmpeg_kit_flutter_min_gpl: 6.0.3
   path_provider: ^2.1.2
   flutter_localizations:
     sdk: flutter
