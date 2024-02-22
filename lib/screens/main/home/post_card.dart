@@ -7,7 +7,6 @@ import 'package:video_player/video_player.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:visibility_detector/visibility_detector.dart';
 import 'package:socialtask/utils/api/post.dart';
-import 'package:socialtask/utils/constants.dart';
 import 'package:socialtask/utils/api/profile.dart';
 import 'package:socialtask/screens/main/social/user.dart';
 import 'package:socialtask/utils/lang.dart';
@@ -205,8 +204,6 @@ class _PostCardState extends State<PostCard> {
     final verifiedIcon = widget.post.user?.verified == 1
         ? const Icon(Icons.verified, color: Colors.green, size: 16.0)
         : const SizedBox.shrink();
-    final profilePicUrl = widget.post.user?.profilePicUrl ??
-        '${Constants.baseUrl}/assets/images/logo_500px.png';
 
     return Card(
       elevation: 4,
@@ -230,7 +227,10 @@ class _PostCardState extends State<PostCard> {
             },
             child: ListTile(
               leading: CircleAvatar(
-                backgroundImage: NetworkImage(profilePicUrl),
+                backgroundImage: widget.post.user?.profilePicUrl != null
+                    ? NetworkImage(widget.post.user!.profilePicUrl!)
+                    : const AssetImage('assets/images/logo_500px.png')
+                        as ImageProvider<Object>?,
                 radius: 24,
               ),
               title: Row(

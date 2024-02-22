@@ -806,10 +806,10 @@ packages:
     dependency: transitive
     description:
       name: wakelock_plus
-      sha256: "61d864da187da78d6eeaa29267af5fede70ada6062829c0e54db3bafe2f10d35"
+      sha256: "26ebc8b5e0037c15e2a1b661dcec8a475cb7205befcce8a33f545ae8c86b367c"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.5"
+    version: "1.1.6"
   wakelock_plus_platform_interface:
     dependency: transitive
     description:
