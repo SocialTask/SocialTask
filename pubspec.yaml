@@ -33,7 +33,7 @@ dependencies:
   http: ^1.2.1
   shared_preferences: ^2.2.2
   provider: ^6.1.1
-  logger: ^2.0.2+1
+  logger: ^2.1.0
   timeago: ^3.6.1
   video_player: ^2.8.2
   chewie: ^1.7.5
