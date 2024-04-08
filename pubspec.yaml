@@ -36,7 +36,7 @@ dependencies:
   logger: ^2.1.0
   timeago: ^3.6.1
   video_player: ^2.8.3
-  chewie: ^1.7.5
+  chewie: ^1.8.1
   intl: ^0.18.1
   visibility_detector: ^0.4.0+2
   animated_text_kit: ^4.2.2
