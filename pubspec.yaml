@@ -31,7 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^1.2.1
-  shared_preferences: ^2.2.2
+  shared_preferences: ^2.2.3
   provider: ^6.1.2
   logger: ^2.3.0
   timeago: ^3.6.1
