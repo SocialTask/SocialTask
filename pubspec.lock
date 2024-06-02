@@ -101,10 +101,10 @@ packages:
     dependency: "direct main"
     description:
       name: chewie
-      sha256: "8bc4ac4cf3f316e50a25958c0f5eb9bb12cf7e8308bb1d74a43b230da2cfc144"
+      sha256: e53da939709efb9aad0f3d72a69a8d05f889168b7a138af60ce78bab5c94b135
       url: "https://pub.dev"
     source: hosted
-    version: "1.7.5"
+    version: "1.8.1"
   cli_util:
     dependency: transitive
     description:
@@ -497,10 +497,10 @@ packages:
     dependency: transitive
     description:
       name: package_info_plus
-      sha256: "7e76fad405b3e4016cd39d08f455a4eb5199723cf594cd1b8916d47140d93017"
+      sha256: cb44f49b6e690fa766f023d5b22cac6b9affe741dd792b6ac7ad4fabe0d7b097
       url: "https://pub.dev"
     source: hosted
-    version: "4.2.0"
+    version: "6.0.0"
   package_info_plus_platform_interface:
     dependency: transitive
     description:
@@ -806,34 +806,34 @@ packages:
     dependency: transitive
     description:
       name: wakelock_plus
-      sha256: "26ebc8b5e0037c15e2a1b661dcec8a475cb7205befcce8a33f545ae8c86b367c"
+      sha256: cd641540ea98ce8f53649fd1430b73f15065c752d2996e9a07cbe9b2742634d7
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.6"
+    version: "1.2.2"
   wakelock_plus_platform_interface:
     dependency: transitive
     description:
       name: wakelock_plus_platform_interface
-      sha256: "40fabed5da06caff0796dc638e1f07ee395fb18801fbff3255a2372db2d80385"
+      sha256: "422d1cdbb448079a8a62a5a770b69baa489f8f7ca21aef47800c726d404f9d16"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.0"
+    version: "1.2.1"
   web:
     dependency: transitive
     description:
       name: web
-      sha256: "1d9158c616048c38f712a6646e317a3426da10e884447626167240d45209cbad"
+      sha256: "97da13628db363c635202ad97068d47c5b8aa555808e7a9411963c533b449b27"
       url: "https://pub.dev"
     source: hosted
-    version: "0.5.0"
+    version: "0.5.1"
   win32:
     dependency: transitive
     description:
       name: win32
-      sha256: "464f5674532865248444b4c3daca12bd9bf2d7c47f759ce2617986e7229494a8"
+      sha256: "0a989dc7ca2bb51eac91e8fd00851297cfffd641aa7538b165c62637ca0eaa4a"
       url: "https://pub.dev"
     source: hosted
-    version: "5.2.0"
+    version: "5.4.0"
   xdg_directories:
     dependency: transitive
     description:
