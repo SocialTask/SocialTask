@@ -41,7 +41,7 @@ dependencies:
   visibility_detector: ^0.4.0+2
   animated_text_kit: ^4.2.2
   camera: ^0.10.5+9
-  image_picker: ^1.0.7
+  image_picker: ^1.1.2
   ffmpeg_kit_flutter_min_gpl: 6.0.3-LTS
   path_provider: ^2.1.2
   flutter_localizations:
