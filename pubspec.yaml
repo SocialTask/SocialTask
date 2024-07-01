@@ -35,7 +35,7 @@ dependencies:
   provider: ^6.1.2
   logger: ^2.3.0
   timeago: ^3.6.1
-  video_player: ^2.8.6
+  video_player: ^2.9.1
   chewie: ^1.8.1
   intl: ^0.19.0
   visibility_detector: ^0.4.0+2
